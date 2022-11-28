@@ -1,6 +1,6 @@
 const constant = require('../constants');
 
-const handleApiClarify = (req, res) => {
+const handleApiClarify = (req, res, fetch) => {
 
     const { USER_ID, PAT, APP_ID, MODEL_ID, MODEL_VERSION_ID } = constant;
 

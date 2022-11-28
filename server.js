@@ -40,7 +40,7 @@ app.get('/profile/:id', (req, res) => { profile.handleProfile(req, res, db); });
 
 app.put('/image', (req, res) => { image.handleImage(req, res, db); });
 
-app.post('/imageAPI', (req, res) => { image.handleApiClarify(req, res) });
+app.post('/imageAPI', (req, res) => { image.handleApiClarify(req, res, fetch); });
 
 const envPort = process.env.PORT || 3000;
 
