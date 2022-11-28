@@ -1,15 +1,14 @@
-const constant = require('../constants');
 const fetch = require('node-fetch');
 
 const handleApiClarify = (req, res) => {
 
-    const { USER_ID, PAT, APP_ID, MODEL_ID, MODEL_VERSION_ID } = constant;
+    const { CLA_USER_ID, CLA_PAT, CLA_APP_ID, CLA_MODEL_ID, CLA_MODEL_VERSION_ID } = process.env;
 
     // Start of Clarifai
     const raw = JSON.stringify({
         "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
+            "user_id": CLA_USER_ID,
+            "app_id": CLA_APP_ID
         },
         "inputs": [
             {
@@ -26,12 +25,12 @@ const handleApiClarify = (req, res) => {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
+            'Authorization': 'Key ' + CLA_PAT
         },
         body: raw
     };
 
-    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+    fetch("https://api.clarifai.com/v2/models/" + CLA_MODEL_ID + "/versions/" + CLA_MODEL_VERSION_ID + "/outputs", requestOptions)
         .then(response => response.json())
         .then(result => {
             res.json(result);
