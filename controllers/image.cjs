@@ -1,5 +1,5 @@
 const constant = require('../constants');
-const fetch = require('node-fetch');
+import fetch from "node-fetch";
 
 const handleApiClarify = (req, res) => {
 
